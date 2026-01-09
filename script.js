@@ -88,7 +88,7 @@ function initContactForm() {
             };
 
             // Send to FormSubmit.co
-            const response = await fetch('https://formsubmit.co/ajax/pranay@ai360.com.au', {
+            const response = await fetch('https://formsubmit.co/ajax/hello@ai360.com.au', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ function initContactForm() {
             }
         } catch (error) {
             console.error('Form submission error:', error);
-            showStatus('error', 'Sorry, there was an error sending your message. Please try again or email us directly at pranay@ai360.com.au');
+            showStatus('error', 'Sorry, there was an error sending your message. Please try again or email us directly at hello@ai360.com.au');
         } finally {
             setLoadingState(false);
         }
