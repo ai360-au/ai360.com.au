@@ -7,11 +7,11 @@
     <meta name="keywords" content="AI360, app development, cloud management, digital solutions, consulting, Sydney, Australia">
     <meta name="author" content="AI360">
     <meta name="robots" content="index, follow">
-    <title>AI360 - Digital Solutions That Drive Results</title>
+    <title>AI360</title>
     <link rel="canonical" href="https://ai360.com.au">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 
     <!-- Open Graph / Social Media -->
@@ -46,107 +46,116 @@
     </script>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="logo">AI360</div>
-        <nav class="nav" aria-label="Main navigation">
-            <a href="#services">Services</a>
-            <a href="#expertise">Expertise</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero">
+        <div class="hero-header">
+            <div class="logo">AI360</div>
+        </div>
         <div class="hero-content">
             <h1 class="hero-title">We Build the Digital Solutions That Drive Results</h1>
         </div>
         <div class="wave-divider">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,60 C360,120 720,0 1440,60 L1440,120 L0,120 Z" fill="#d4d0c8"></path>
+            <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+                <path d="M0,100 C300,200 600,0 900,100 C1200,200 1350,50 1440,80 L1440,200 L0,200 Z" fill="#d5d0c4"></path>
             </svg>
         </div>
     </section>
 
-    <!-- Intro Section -->
-    <section class="intro">
-        <p class="intro-text">Bringing your ideas to life through innovative app development and secure cloud management.</p>
-    </section>
+    <!-- Intro & Services Section -->
+    <section class="intro-services">
+        <div class="intro-content">
+            <p class="intro-text">Bringing your ideas to life through innovative app development and secure cloud management.</p>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="services-grid">
-            <article class="service-card">
-                <h2>App Development</h2>
-                <p>From ideation to launch, we help you create cutting-edge mobile applications that engage your target audience and achieve your business goals.</p>
-            </article>
-            <article class="service-card">
-                <h2>Cloud Management</h2>
-                <p>We take the hassle out of managing your cloud infrastructure, ensuring your data is secure and your applications are always up and running.</p>
-            </article>
-            <article class="service-card">
-                <h2>Consulting</h2>
-                <p>Our experienced consultants can help you develop a strategic roadmap for your digital transformation journey.</p>
-            </article>
+            <div class="services-list">
+                <p class="service-item"><strong>App Development:</strong> From ideation to launch, we help you create cutting-edge mobile applications that engage your target audience and achieve your business goals.</p>
+
+                <p class="service-item"><strong>Cloud Management:</strong> We take the hassle out of managing your cloud infrastructure, ensuring your data is secure and your applications are always up and running.</p>
+
+                <p class="service-item"><strong>Consulting:</strong> Our experienced consultants can help you develop a strategic roadmap for your digital transformation journey.</p>
+            </div>
         </div>
     </section>
 
-    <!-- Expertise Section -->
+    <!-- Areas of Expertise Section -->
     <section class="expertise" id="expertise">
-        <h2 class="section-title">Areas of Expertise</h2>
-        <div class="expertise-grid">
-            <article class="expertise-card">
-                <h3>Web Development</h3>
-                <p>Building responsive, modern websites and web applications using the latest technologies and best practices for optimal performance and user experience.</p>
-            </article>
-            <article class="expertise-card">
-                <h3>App Development</h3>
-                <p>Creating native and cross-platform mobile applications that deliver seamless experiences across iOS and Android devices.</p>
-            </article>
-            <article class="expertise-card">
-                <h3>Infrastructure Services</h3>
-                <p>Designing and managing scalable cloud infrastructure solutions that keep your business running smoothly and securely.</p>
-            </article>
+        <div class="expertise-content">
+            <h2 class="expertise-title">Areas of Expertise</h2>
+
+            <div class="expertise-list">
+                <div class="expertise-row">
+                    <div class="expertise-name">Web Development</div>
+                    <div class="expertise-desc">The world of music is ever growing and evolving, and we're not just talking about sound trends. With the consistent introduction of varying revenue streams and distribution channels, the opportunity for profit grows, but so does the complexity.</div>
+                </div>
+
+                <div class="expertise-row">
+                    <div class="expertise-name">App Development</div>
+                    <div class="expertise-desc">The way people consume entertainment is constantly in flux, so the laws must adapt quickly. We strive to anticipate these changes so you can focus more on creating a performance of a lifetime.</div>
+                </div>
+
+                <div class="expertise-row">
+                    <div class="expertise-name">Infrastructure Services</div>
+                    <div class="expertise-desc">Whether you run a theater, recording studio, or an eCommerce website, all businesses need to minimize their legal liability and risk.</div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="contact-container">
-            <div class="contact-info">
-                <h2>Get in Touch</h2>
-                <p class="location">Sydney, Australia</p>
+            <div class="contact-left">
+                <h2 class="contact-title">Get in Touch</h2>
             </div>
-            <form class="contact-form" id="contactForm" novalidate>
-                <div class="form-group">
-                    <label for="name">Name <span class="required">*</span></label>
-                    <input type="text" id="name" name="name" required autocomplete="name">
-                    <span class="error-message" id="nameError"></span>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email <span class="required">*</span></label>
-                    <input type="email" id="email" name="email" required autocomplete="email">
-                    <span class="error-message" id="emailError"></span>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message <span class="required">*</span></label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                    <span class="error-message" id="messageError"></span>
-                </div>
-                <button type="submit" class="submit-btn" id="submitBtn">
-                    <span class="btn-text">Send Message</span>
-                    <span class="btn-loading" style="display: none;">Sending...</span>
-                </button>
-                <div class="form-status" id="formStatus"></div>
-            </form>
+            <div class="contact-right">
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div class="form-group">
+                        <label>Name <span class="required">(required)</span></label>
+                        <div class="name-fields">
+                            <div class="name-field">
+                                <span class="field-label">First Name</span>
+                                <input type="text" id="firstName" name="firstName" required autocomplete="given-name">
+                            </div>
+                            <div class="name-field">
+                                <span class="field-label">Last Name</span>
+                                <input type="text" id="lastName" name="lastName" required autocomplete="family-name">
+                            </div>
+                        </div>
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">(required)</span></label>
+                        <input type="email" id="email" name="email" required autocomplete="email">
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <span class="checkbox-text">Sign up for news and updates</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message <span class="required">(required)</span></label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <span class="error-message" id="messageError"></span>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="btn-text">Submit</span>
+                        <span class="btn-loading" style="display: none;">Sending...</span>
+                    </button>
+                    <div class="form-status" id="formStatus"></div>
+                </form>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p class="copyright">&copy; 2024 AI360. All rights reserved.</p>
-            <p class="footer-location">Sydney, NSW, Australia</p>
+            <p class="footer-location">Sydney, Australia</p>
         </div>
     </footer>
 

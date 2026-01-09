@@ -1,31 +1,11 @@
 /**
  * AI360 Website Scripts
- * Handles contact form submission via Ajax and UI interactions
+ * Handles contact form submission via Ajax
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize components
-    initHeaderScroll();
     initContactForm();
 });
-
-/**
- * Header scroll effect - adds background when scrolled
- */
-function initHeaderScroll() {
-    const header = document.querySelector('.header');
-
-    function handleScroll() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Check initial state
-}
 
 /**
  * Contact Form with Ajax submission
@@ -33,15 +13,19 @@ function initHeaderScroll() {
  */
 function initContactForm() {
     const form = document.getElementById('contactForm');
+    if (!form) return;
+
     const submitBtn = document.getElementById('submitBtn');
     const btnText = submitBtn.querySelector('.btn-text');
     const btnLoading = submitBtn.querySelector('.btn-loading');
     const formStatus = document.getElementById('formStatus');
 
     // Form fields
-    const nameInput = document.getElementById('name');
+    const firstNameInput = document.getElementById('firstName');
+    const lastNameInput = document.getElementById('lastName');
     const emailInput = document.getElementById('email');
     const messageInput = document.getElementById('message');
+    const newsletterInput = document.getElementById('newsletter');
 
     // Error message elements
     const nameError = document.getElementById('nameError');
@@ -49,17 +33,26 @@ function initContactForm() {
     const messageError = document.getElementById('messageError');
 
     // Real-time validation
-    nameInput.addEventListener('blur', () => validateField(nameInput, nameError, 'Please enter your name'));
-    emailInput.addEventListener('blur', () => validateEmail(emailInput, emailError));
-    messageInput.addEventListener('blur', () => validateField(messageInput, messageError, 'Please enter a message'));
+    if (firstNameInput) {
+        firstNameInput.addEventListener('blur', () => validateName());
+    }
+    if (lastNameInput) {
+        lastNameInput.addEventListener('blur', () => validateName());
+    }
+    if (emailInput) {
+        emailInput.addEventListener('blur', () => validateEmail(emailInput, emailError));
+    }
+    if (messageInput) {
+        messageInput.addEventListener('blur', () => validateField(messageInput, messageError, 'Please enter a message'));
+    }
 
     // Clear errors on input
-    [nameInput, emailInput, messageInput].forEach(input => {
-        input.addEventListener('input', () => {
-            input.classList.remove('error');
-            const errorEl = document.getElementById(input.id + 'Error');
-            if (errorEl) errorEl.textContent = '';
-        });
+    [firstNameInput, lastNameInput, emailInput, messageInput].forEach(input => {
+        if (input) {
+            input.addEventListener('input', () => {
+                input.classList.remove('error');
+            });
+        }
     });
 
     // Form submission
@@ -71,7 +64,7 @@ function initContactForm() {
         formStatus.textContent = '';
 
         // Validate all fields
-        const isNameValid = validateField(nameInput, nameError, 'Please enter your name');
+        const isNameValid = validateName();
         const isEmailValid = validateEmail(emailInput, emailError);
         const isMessageValid = validateField(messageInput, messageError, 'Please enter a message');
 
@@ -85,15 +78,16 @@ function initContactForm() {
         try {
             // Prepare form data
             const formData = {
-                name: nameInput.value.trim(),
+                name: `${firstNameInput.value.trim()} ${lastNameInput.value.trim()}`,
                 email: emailInput.value.trim(),
                 message: messageInput.value.trim(),
+                newsletter: newsletterInput ? newsletterInput.checked : false,
                 _subject: 'New Contact Form Submission - AI360',
                 _captcha: 'false',
                 _template: 'table'
             };
 
-            // Send to FormSubmit.co (replace with your email)
+            // Send to FormSubmit.co
             const response = await fetch('https://formsubmit.co/ajax/pranay@ai360.com.au', {
                 method: 'POST',
                 headers: {
@@ -122,17 +116,38 @@ function initContactForm() {
     });
 
     /**
+     * Validate name fields
+     */
+    function validateName() {
+        const firstName = firstNameInput ? firstNameInput.value.trim() : '';
+        const lastName = lastNameInput ? lastNameInput.value.trim() : '';
+
+        if (!firstName || !lastName) {
+            if (!firstName && firstNameInput) firstNameInput.classList.add('error');
+            if (!lastName && lastNameInput) lastNameInput.classList.add('error');
+            if (nameError) nameError.textContent = 'Please enter your full name';
+            return false;
+        }
+
+        if (firstNameInput) firstNameInput.classList.remove('error');
+        if (lastNameInput) lastNameInput.classList.remove('error');
+        if (nameError) nameError.textContent = '';
+        return true;
+    }
+
+    /**
      * Validate a required field
      */
     function validateField(input, errorEl, errorMessage) {
+        if (!input) return true;
         const value = input.value.trim();
         if (!value) {
             input.classList.add('error');
-            errorEl.textContent = errorMessage;
+            if (errorEl) errorEl.textContent = errorMessage;
             return false;
         }
         input.classList.remove('error');
-        errorEl.textContent = '';
+        if (errorEl) errorEl.textContent = '';
         return true;
     }
 
@@ -140,23 +155,24 @@ function initContactForm() {
      * Validate email format
      */
     function validateEmail(input, errorEl) {
+        if (!input) return true;
         const value = input.value.trim();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!value) {
             input.classList.add('error');
-            errorEl.textContent = 'Please enter your email';
+            if (errorEl) errorEl.textContent = 'Please enter your email';
             return false;
         }
 
         if (!emailRegex.test(value)) {
             input.classList.add('error');
-            errorEl.textContent = 'Please enter a valid email address';
+            if (errorEl) errorEl.textContent = 'Please enter a valid email address';
             return false;
         }
 
         input.classList.remove('error');
-        errorEl.textContent = '';
+        if (errorEl) errorEl.textContent = '';
         return true;
     }
 
@@ -188,19 +204,3 @@ function initContactForm() {
         }
     }
 }
-
-/**
- * Smooth scroll for anchor links
- */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});

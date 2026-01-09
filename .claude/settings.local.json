@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:tortoise-whale-x9kx.squarespace.com)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh run list:*)",
+      "Bash(curl:*)",
+      "Bash(dig:*)",
+      "Bash(gh api:*)",
+      "Bash(gh workflow run:*)"
+    ]
+  }
+}
